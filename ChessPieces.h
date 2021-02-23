@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 int CheckKnight (string str1, string str2)
 {
     int x1,x2,y1,y2;
@@ -18,7 +19,5 @@ int CheckKnight (string str1, string str2)
       else return 2;  
     }
    }
-   else return 3;  
-    //scanf("%d %d %d %d",&x1,&y1,&x2,&y2);        
-    return 0;
+   else return 3;      
 }
