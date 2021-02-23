@@ -6,7 +6,7 @@ int main()
 {	
 	vector<chess> v;//Вектор с месторасположением фигур
 	Reading_Chess_board(v);//Считывает шахматную доску в вектор "v"
-	cout<<"Input date format:\n  Knight(A5,B3);  or  Chess(A1(B2(;  or  Chess)C5)N5);  or  Chess,E8,A2,;\n  Pay attention to the register!\n>>";
+	cout<<"Input date format:\n  Knight(B1,C3);  or  Chess(A1(B2(;  or  Chess)C5)N5);  or  Chess,E8,A2,;\n  Pay attention to the register!\n>>";
 	int flag=0;
 	string s;
 	cin>>s;
@@ -27,21 +27,28 @@ int main()
 	flag=0;
 	if(str[0]=="Knight")
 		Knight(v,str,flag);
+	//cout<<"--1--";
 	if(flag==5) 
 	{
 		RewriteBoard(v);//обновляет доску
 		cout<<"//The move was successful\n";//Сообщение о успехе
 	}
-	cout<<"Do we continual? (yes - continue; no - destroy the board; Rubbish - exit)\n>>";//хотим ли мы продолжать
+	cout<<"Do we continual? (yes - continue; no - destroy the board?;\n>>";//хотим ли мы продолжать?
 	cin>>s;
 	cout<<"\n";
 	if(s=="yes" || s=="YES" || s=="Yes" || s=="YeS" || s=="yES" || s=="YEs" )
 		main();//Давай по новой, все фигня
 	else if(s=="no" || s=="No" || s=="nO")
 	{
-		StandartBoard();//Обнуляет шахматную доску
-		cout<<"//THE END\n//The chess board was destroed";
+		cout<<"Destroy the board? (yes/no/ Rubbish) ( Rubbish=no)\n>>";//Хотим ли мы обнулить доску?
+		cin>>s;
+		if(s=="yes" || s=="YES" || s=="Yes" || s=="YeS" || s=="yES" || s=="YEs" )
+		{
+			StandartBoard();//Обнуляет шахматную доску
+			cout<<"//THE END\n//The chess board was destroed";
+		}
+		else return 0;	
 	}
 	else 
-	cin>>s;
+		main();//Давай по новой, все фигня
 }

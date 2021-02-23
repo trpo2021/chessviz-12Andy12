@@ -30,45 +30,45 @@ void RewriteBoard(vector<chess> &v)//Обновляет доску в файле
 	fstream file;
 	file.open("ChessBoard.txt", ios::out);
 	for(int i=0;i<32;++i)
-		file<<v[i].name<<"-"<<v[i].location<<"\n";
+		file<<v[i].name<<"-"<<v[i].team<<"-"<<v[i].location<<"\n";
 	file.close();
 }
 void StandartBoard()//Обнуляет шахматную доску
 {
 	fstream file;
 	file.open("ChessBoard.txt", ios::out);
-	file<<"Knight-B1\n";//Рыцари
-	file<<"Knight-B8\n";
-	file<<"Knight-G1\n";
-	file<<"Knight-G8\n";
-	file<<"King-E1\n";//Короли
-	file<<"King-E8\n";
-	file<<"Qween-D1\n";//Ферзи
-	file<<"Qween-D8\n";
-	file<<"Bishop-C1\n";//Слоны
-	file<<"Bishop-F1\n";
-	file<<"Bishop-C8\n";
-	file<<"Bishop-F8\n";
-	file<<"Rook-A1\n";//Ладьи
-	file<<"Rook-A8\n";
-	file<<"Rook-H1\n";
-	file<<"Rook-H8\n";
-	file<<"Pawn-A2\n";//Пешки
-	file<<"Pawn-B2\n";
-	file<<"Pawn-C2\n";
-	file<<"Pawn-D2\n";
-	file<<"Pawn-E2\n";
-	file<<"Pawn-F2\n";
-	file<<"Pawn-G2\n";
-	file<<"Pawn-H2\n";
-	file<<"Pawn-A7\n";
-	file<<"Pawn-B7\n";
-	file<<"Pawn-C7\n";
-	file<<"Pawn-D7\n";
-	file<<"Pawn-E7\n";
-	file<<"Pawn-F7\n";
-	file<<"Pawn-G7\n";
-	file<<"Pawn-H7\n";
+	file<<"Knight-1-B1\n";//Рыцари
+	file<<"Knight-2-B8\n";
+	file<<"Knight-1-G1\n";
+	file<<"Knight-2-G8\n";
+	file<<"King-1-E1\n";//Короли
+	file<<"King-2-E8\n";
+	file<<"Qween-1-D1\n";//Ферзи
+	file<<"Qween-2-D8\n";
+	file<<"Bishop-1-C1\n";//Слоны
+	file<<"Bishop-1-F1\n";
+	file<<"Bishop-2-C8\n";
+	file<<"Bishop-2-F8\n";
+	file<<"Rook-1-A1\n";//Ладьи
+	file<<"Rook-2-A8\n";
+	file<<"Rook-1-H1\n";
+	file<<"Rook-2-H8\n";
+	file<<"Pawn-1-A2\n";//Пешки
+	file<<"Pawn-1-B2\n";
+	file<<"Pawn-1-C2\n";
+	file<<"Pawn-1-D2\n";
+	file<<"Pawn-1-E2\n";
+	file<<"Pawn-1-F2\n";
+	file<<"Pawn-1-G2\n";
+	file<<"Pawn-1-H2\n";
+	file<<"Pawn-2-A7\n";
+	file<<"Pawn-2-B7\n";
+	file<<"Pawn-2-C7\n";
+	file<<"Pawn-2-D7\n";
+	file<<"Pawn-2-E7\n";
+	file<<"Pawn-2-F7\n";
+	file<<"Pawn-2-G7\n";
+	file<<"Pawn-2-H7\n";
 	file.close();
 }
 void Reading_Chess_board(vector<chess> &v)
@@ -80,7 +80,7 @@ void Reading_Chess_board(vector<chess> &v)
 	for(int i=0;i<32;++i)
 	{
 		file>>a;
-		if(a!="DESTROED")//Если фигура не уничтожена
+		if(a!="DESTROED-0-")//Если фигура не уничтожена
 		{
 			b.location+=a[a.size()-2];
 			b.location+=a[a.size()-1];
@@ -90,6 +90,16 @@ void Reading_Chess_board(vector<chess> &v)
 				b.name+=a[i];
 				i++;
 			}	
+			if(a[i]=='-') b.team=a[i+1]-48;
+			v.push_back(b);
+			b.location="";
+			b.name="";
+		}
+		else if(a=="DESTROED-0-")
+		{
+			b.location="";
+			b.team=0;
+			b.name="DESTROED";
 			v.push_back(b);
 			b.location="";
 			b.name="";
@@ -99,26 +109,37 @@ void Reading_Chess_board(vector<chess> &v)
 }
 void Knight(vector<chess> &v, vector<string> &str, int &flag)
 {
+	
 	int id=-1;//Строка с номером нужной шахматы на доске 
 	for(int i=0;i<32;++i)
 	{
 		if(v[i].name == "Knight" && v[i].location==str[1]) id=i;
+		//cout<<"=="<<i<<"==\n";
 	}
 	if(id==-1)
 		cout<<"-Error: There is no such figure in this area\n";//В этой координате нет такой фигуры
 	if(CheckKnight(str[1],str[2])==3 && id!=-1)
 		cout<<"-Error: Initial data entered incorrectly\n";//Данные введены не правильно, ход за пределы доски
 	if(CheckKnight(str[1],str[2])==2 && id!=-1) 
-		cout<<"-Error: This piece cannot make this move\n";//Эта фигурв не умеет так ходить 
+		cout<<"-Error: This piece cannot make this move\n";//Эта фигура не умеет так ходить 
 	if(CheckKnight(str[1],str[2])==1 && id!=-1) //если зашло в этот if то такой ход совершить можно, но там может быть фигура
 	{
+		
 		for(int i=0;i<32;++i)
 		{
-			if(v[i].location==str[2])
+			if(v[i].location==str[2] && v[i].team!=v[id].team)
 			{
-				cout<<"//The enemy figure was destroyed\n";//там уже стоит другая фигура
+				cout<<"//The enemy figure '"<<v[i].name<<"' was destroyed\n";//Вражеская фигура уничтожена
+				flag=0;
+				v[i].name="DESTROED";
+				v[i].location="";
+				v[i].team=0;
+			}
+			else if (v[i].location==str[2] && v[i].team==v[id].team)
+			{
+				cout<<"//A friendly figure gets in the way\n";//Союзная фигура мешает
 				flag=1;
-			}	
+			}
 		}
 		if(flag==0)
 		{
