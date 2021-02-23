@@ -1,10 +1,11 @@
 #include<bits/stdc++.h>
+#include"ChessPieces.h"
 using namespace std;
 int main()
 {	
-	cout<<"Input date format:\n  Chess(A5,B3);  or  Chess(A1(B2(;  or  Chess)C5)N5);  or  Chess,E8,A2,;\n";
+	cout<<"Input date format:\n  Knight(A5,B3);  or  Chess(A1(B2(;  or  Chess)C5)N5);  or  Chess,E8,A2,;\n";
 	int flag=0;
-	string s,Chess="Chess";//Chess(A5,B7);
+	string s,Chess="Chess",SKnight="Knight";//Chess(A5,B7);
 	cin>>s;
 	vector<string> str(3);
 	for(int i=0;i<s.size()-1;++i)
@@ -30,7 +31,27 @@ int main()
 	{
 		cout<<str[i]<<"\n";
 	}
+	if(str[0]==SKnight)
+	{
+		cout<<"All OK";
+		if(CheckKnight(str[1],str[2])==3) 
+		{
+			cout<<"Error: Initial data entered incorrectly";
+			return 2;
+		}
+		if(CheckKnight(str[1],str[2])==2) 
+		{
+			cout<<"Error: This piece cannot make this move";
+			return 3;
+		}
+		if(CheckKnight(str[1],str[2])==1) 
+		{
+			cout<<"All OK";
+		}
+	}
 	
-		
+	
+	
+	
 	
 }
