@@ -1,0 +1,2 @@
+C:\Users\saw27\Downloads\program\Chess\chessviz-12Andy12\Chess\x64\Debug\Chess.exe
+C:\Users\saw27\Downloads\program\Chess\chessviz-12Andy12\Chess\x64\Debug\Chess.pdb
