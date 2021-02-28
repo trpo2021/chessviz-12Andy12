@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp 
+	g++ main.cpp Bishop.cpp chess.h ChessPieces.h FileWork.cpp King.cpp Pawn.cpp Qween.cpp Rook.cpp Knight.cpp
