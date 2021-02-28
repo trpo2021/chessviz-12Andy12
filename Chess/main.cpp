@@ -2,13 +2,14 @@
 #include<vector>
 #include<string>
 #include <fstream>
+//#include "chess.h"
 #include"ChessPieces.h"
 using namespace std;
 int main()
 {	
 	vector<chess> v;//Вектор с месторасположением фигур
 	Reading_Chess_board(v);//Считывает шахматную доску в вектор "v"
-	cout<<"Input date format:\n  NameStartLocation-FinishLocation;\n  KnightB1-C3;  or  QweenD1-G4;  or  RookA1-A5;  or  BishopC1-E3;\n  Pay attention to the register!\n>>";
+	cout<<"Input date format:\n  NameStartLocation-FinishLocation;\n  KnightB1-C3;  or  QweenD1-G4;  or  RookA1-A5;  or  BishopC1-E3 or PawnA2-A3;\n  Pay attention to the register!\n>>";
 	int flag=0;
 	string s;
 	cin>>s;
@@ -29,6 +30,7 @@ int main()
 	if(flag!=2)//Ошибка: Введена какая-та хрень
 		cout<<"-Error: Input data limit exceeded\n";
 	flag=0;
+	//cout <<"\n"<< str[0] << " " << str[1] << " " << str[2];
 	if(str[0]=="Knight")
 		Knight(v,str,flag);
 	else if(str[0]=="Qween")
@@ -42,7 +44,7 @@ int main()
 	else if(str[0]=="Pawn")
 		Pawn(v,str,flag);
 	else 
-		cout<<"Error: The bad name";
+		cout<<"Error: The bad name\n";
 	
 		
 	if(flag==5) 
@@ -66,5 +68,5 @@ int main()
 		else return 0;	
 	}
 	else 
-		main();//Давай по новой, все фигня
+		main();//Давай по новой, все фигня*/
 }
