@@ -1,3 +1,13 @@
 Ignor/
 *.exe
 ChessBoard.txt
+.vs/
+x64/
+Chess/*.vcxproj
+Chess/.vs/Chess/v16/*.suo
+Chess/*.tlog
+Chess/*.log
+Chess/*.pdb
+Chess/.vs/*.db
+Chess/*.ilk
+Chess/.vs/*.ipch
