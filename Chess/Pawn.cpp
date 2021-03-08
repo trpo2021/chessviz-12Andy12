@@ -2,7 +2,6 @@
 #include<vector>
 #include<string>
 #include"ChessPieces.h"
-//#include "chess.h"
 using namespace std;
 void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 {
@@ -13,8 +12,6 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 	y2 = str[2][1] - 48;
 	if (x1 <= 8 && x1 >= 1 && y1 <= 8 && y1 >= 1 && x2 <= 8 && x2 >= 1 && y2 <= 8 && y2 >= 1)
 	{
-
-		//if( (x2==x1+1 && y2==y1) || (x2==x1-1 && y2==y1) || (x2==x1 && y2==y1+1) || (x2==x1 && y2==y1-1) || (x2==x1+1 && y2==y1-1) || (x2==x1-1 && y2==y1-1) || (x2==x1-1 && y2==y1+1) || (x2==x1+1 && y2==y1+1) )
 		if (y2 == y1 + 1 && x2 == x1)
 		{
 			for (int i = 0; i < 32; ++i)
@@ -78,7 +75,7 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 	else
 		cout << "-Error: Initial data entered incorrectly\n";//Данные введены не правильно, ход за пределы доски
 }
-void Pawn(vector<chess>& v, vector<string>& str, int& flag)
+void Pawn(vector<chess>& v, vector<string>& str, int& flag, int& switcher)
 {
 	int id = -1;//Строка с номером нужной шахматы на доске 
 	for (int i = 0; i < 32; ++i)
@@ -86,6 +83,8 @@ void Pawn(vector<chess>& v, vector<string>& str, int& flag)
 			id = i;
 	if (id == -1)
 		cout << "-Error: There is no such figure in this area\n";//В этой координате нет такой фигуры
+	else if (v[id].team != switcher)
+		cout << "It's time to another team\n";
 	else
 		CheckPawn(v, str, flag, id);
 }

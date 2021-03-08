@@ -4,12 +4,13 @@
 #include <fstream>
 #include"ChessPieces.h"
 using namespace std;
-void RewriteBoard(vector<chess>& v)//Обновляет доску в файле 
+void RewriteBoard(vector<chess>& v,int &switcher)//Обновляет доску в файле 
 {
 	fstream file;
 	file.open("ChessBoard.txt", ios::out);
 	for (int i = 0; i < 32; ++i)
 		file << v[i].name << "-" << v[i].team << "-" << v[i].location << "\n";
+	file << switcher;
 	file.close();
 }
 void StandartBoard()//Обнуляет шахматную доску
@@ -48,9 +49,10 @@ void StandartBoard()//Обнуляет шахматную доску
 	file << "Pawn-2-F7\n";
 	file << "Pawn-2-G7\n";
 	file << "Pawn-2-H7\n";
+	file << "1\n";
 	file.close();
 }
-void Reading_Chess_board(vector<chess>& v)
+void Reading_Chess_board(vector<chess>& v,int &switcher)
 {
 	chess b;
 	fstream file;
@@ -84,6 +86,8 @@ void Reading_Chess_board(vector<chess>& v)
 			b.name = "";
 		}
 	}
+	file >> a;
+	switcher = a[0] - 48;
 	file.close();
 }
 void Move(vector<chess>& v, vector<string>& str, int& id, int& flag)
@@ -109,4 +113,11 @@ void Move(vector<chess>& v, vector<string>& str, int& id, int& flag)
 		v[id].location = str[2];//переставляет фигуру
 		flag = 5;
 	}
+}
+void MoveSwitcher(int &switcher)//Переключает на следующую команду
+{
+	if (switcher == 1)
+		switcher = 2;
+	else
+		switcher = 1;
 }

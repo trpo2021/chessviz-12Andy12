@@ -7,9 +7,11 @@
 using namespace std;
 int main()
 {	
+	int switcher;
 	vector<chess> v;//Вектор с месторасположением фигур
-	Reading_Chess_board(v);//Считывает шахматную доску в вектор "v"
-	cout<<"Input date format:\n  NameStartLocation-FinishLocation;\n  KnightB1-C3;  or  QweenD1-G4;  or  RookA1-A5;  or  BishopC1-E3 or PawnA2-A3;\n  Pay attention to the register!\n>>";
+	Reading_Chess_board(v,switcher);//Считывает шахматную доску в вектор "v" + switcher - номер команды, котораяя сейчас делает ход
+	cout << "Now the teem is moving - "<<switcher;
+	cout << "\nInput date format:\n  NameStartLocation-FinishLocation;\n  KnightB1-C3;  or  QweenD1-G4;  or  RookA1-A5;  or  BishopC1-E3 or PawnA2-A3;\n  Pay attention to the register!\n>>";
 	int flag=0;
 	string s;
 	getline(cin, s);
@@ -32,27 +34,25 @@ int main()
 	flag=0;
 	//cout <<"\n"<< str[0] << " " << str[1] << " " << str[2];
 	if(str[0]=="Knight")
-		Knight(v,str,flag);
+		Knight(v,str,flag, switcher);
 	else if(str[0]=="Qween")
-		Qween(v,str,flag);	
+		Qween(v,str,flag, switcher);
 	else if(str[0]=="Rook")
-		Rook(v,str,flag);
+		Rook(v,str,flag, switcher);
 	else if(str[0]=="Bishop")
-		Bishop(v,str,flag);	
+		Bishop(v,str,flag, switcher);
 	else if(str[0]=="King")
-		King(v,str,flag);
+		King(v,str,flag, switcher);
 	else if(str[0]=="Pawn")
-		Pawn(v,str,flag);
+		Pawn(v,str,flag, switcher);
 	else 
 		cout<<"Error: The bad name\n";
-	
-		
 	if(flag==5) 
 	{
-		RewriteBoard(v);//обновляет доску
+		MoveSwitcher(switcher);//Переключает на следующую команду
+		RewriteBoard(v,switcher);//обновляет доску
 		cout<<"//The move was successful\n";//Сообщение о успехе
 	} 
-	
 	cout<<"Do we continual? (yes - continue; no - destroy the board?;\n>>";//хотим ли мы продолжать?
 	getline(cin, s);
 	cout<<"\n";
@@ -67,6 +67,6 @@ int main()
 		}
 		else return 0;	
 	}
-	else 
-		main();//Давай по новой, все фигня*/
+	else
+		main();//Давай по новой, все фигня*/	
 }

@@ -20,7 +20,7 @@ void CheckRook(vector<chess>& v, vector<string>& str, int& flag, int& id)
 	else
 		cout << "-Error: Initial data entered incorrectly\n";//Данные введены не правильно, ход за пределы доски
 }
-void Rook(vector<chess>& v, vector<string>& str, int& flag)
+void Rook(vector<chess>& v, vector<string>& str, int& flag, int& switcher)
 {
 	int id = -1;//Строка с номером нужной шахматы на доске 
 	for (int i = 0; i < 32; ++i)
@@ -28,6 +28,8 @@ void Rook(vector<chess>& v, vector<string>& str, int& flag)
 			id = i;
 	if (id == -1)
 		cout << "-Error: There is no such figure in this area\n";//В этой координате нет такой фигуры
+	else if (v[id].team != switcher)
+		cout << "It's time to another team\n";
 	else
 		CheckRook(v, str, flag, id);
 }
