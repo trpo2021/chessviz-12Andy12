@@ -12,17 +12,17 @@ int main()
 	cout<<"Input date format:\n  NameStartLocation-FinishLocation;\n  KnightB1-C3;  or  QweenD1-G4;  or  RookA1-A5;  or  BishopC1-E3 or PawnA2-A3;\n  Pay attention to the register!\n>>";
 	int flag=0;
 	string s;
-	cin>>s;
+	getline(cin, s);
 	vector<string> str(3);
 	for(int i=0;i<s.size()-1;++i)//Принимет команду: str[0] - фигура str[1] - откуда перемещать str[2] - куда перемещать
 	{
-		if((65<=s[i] && s[i]<=90) && i!=0 && s[i]!='-' && s[i]!=';')
+		if((65<=s[i] && s[i]<=90) && i!=0)
 		{
 			flag++;
 			str[flag].push_back(s[i]);
 			continue;
 		}
-		if(s[i]!='-' && s[i]!=';') str[flag].push_back(s[i]);
+		if(s[i]!='-' && s[i]!=';' && s[i]!=' ') str[flag].push_back(s[i]);
 		if(s[i]==';') break;
 	}
 	if(s[s.size()-1]!=';')//Ошибка: Ожидалась ';'
@@ -54,7 +54,7 @@ int main()
 	} 
 	
 	cout<<"Do we continual? (yes - continue; no - destroy the board?;\n>>";//хотим ли мы продолжать?
-	cin>>s;
+	getline(cin, s);
 	cout<<"\n";
 	if(s=="no" || s=="No" || s=="nO")
 	{
