@@ -34,6 +34,11 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 			{
 				v[id].location = str[2];//переставляет фигуру
 				flag = 5;
+				if ((v[id].location[1] == '8' && v[id].team == 1) || (v[id].location[1] == '1' && v[id].team == 2))
+				{
+					cout << "The Pawn transform to Queen\n";
+					v[id].name = "Queen";
+				}
 			}
 		}
 		else if (abs(x1 - x2) == 1 && y2 == y1 + 1)
@@ -60,6 +65,11 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 			{
 				v[id].location = str[2];//переставляет фигуру
 				flag = 5;
+				if ((v[id].location[1] == '8' && v[id].team == 1) || (v[id].location[1] == '1' && v[id].team == 2))
+				{
+					cout << "The Pawn transform to Queen\n";
+					v[id].name = "Queen";
+				}
 			}
 		}
 		else
