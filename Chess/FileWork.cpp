@@ -23,8 +23,8 @@ void StandartBoard()//Обнуляет шахматную доску
 	file << "Knight-2-G8\n";
 	file << "King-1-E1\n";//Короли
 	file << "King-2-E8\n";
-	file << "Qween-1-D1\n";//Ферзи
-	file << "Qween-2-D8\n";
+	file << "Queen-1-D1\n";//Ферзи
+	file << "Queen-2-D8\n";
 	file << "Bishop-1-C1\n";//Слоны
 	file << "Bishop-1-F1\n";
 	file << "Bishop-2-C8\n";

@@ -10,8 +10,8 @@ int main()
 	int switcher;
 	vector<chess> v;//¬ектор с месторасположением фигур
 	Reading_Chess_board(v,switcher);//—читывает шахматную доску в вектор "v" + switcher - номер команды, котора€€ сейчас делает ход
-	cout << "Now the teem is moving - "<<switcher;
-	cout << "\nInput date format:\n  NameStartLocation-FinishLocation;\n  KnightB1-C3;  or  QweenD1-G4;  or  RookA1-A5;  or  BishopC1-E3 or PawnA2-A3;\n  Pay attention to the register!\n>>";
+	cout << "Now the "<<switcher<<" teem is moving";
+	cout << "\nInput date format:\n  NameStartLocation-FinishLocation;\n  KnightB1-C3;  or  QueenD1-G4;  or  RookA1-A5;  or  BishopC1-E3 or PawnA2-A3;\n  Pay attention to the register!\n>>";
 	int flag=0;
 	string s;
 	getline(cin, s);
@@ -35,8 +35,8 @@ int main()
 	//cout <<"\n"<< str[0] << " " << str[1] << " " << str[2];
 	if(str[0]=="Knight")
 		Knight(v,str,flag, switcher);
-	else if(str[0]=="Qween")
-		Qween(v,str,flag, switcher);
+	else if(str[0]=="Queen")
+		Queen(v,str,flag, switcher);
 	else if(str[0]=="Rook")
 		Rook(v,str,flag, switcher);
 	else if(str[0]=="Bishop")

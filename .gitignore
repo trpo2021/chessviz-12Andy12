@@ -1,6 +1,6 @@
 Ignor/
 *.exe
-ChessBoard.txt
+!ChessBoard.txt
 .vs/
 x64/
 Chess/*.vcxproj

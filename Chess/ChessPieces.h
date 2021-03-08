@@ -5,8 +5,8 @@
 #include <fstream>
 #include "chess.h"
 using namespace std;
-void CheckQween(vector<chess>& v, vector<string>& str, int& flag, int& id);
-void Qween(vector<chess>& v, vector<string>& str, int& flag, int & switcher);
+void CheckQueen(vector<chess>& v, vector<string>& str, int& flag, int& id);
+void Queen(vector<chess>& v, vector<string>& str, int& flag, int & switcher);
 void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id);
 void Pawn(vector<chess>& v, vector<string>& str, int& flag, int& switcher);
 void CheckKing(vector<chess>& v, vector<string>& str, int& flag, int& id);
