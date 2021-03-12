@@ -1,4 +1,4 @@
-Knight-1-B1-0
+Knight-1-C3-1
 Knight-2-C6-0
 Knight-1-G1-0
 Knight-2-G8-0
@@ -22,7 +22,7 @@ Pawn-1-E2-0
 Pawn-1-F2-0
 Pawn-1-G2-0
 Pawn-1-H2-0
-Pawn-2-A6-0
+Pawn-2-A5-0
 DESTROED-0--0
 Pawn-2-C7-0
 Pawn-2-D7-0

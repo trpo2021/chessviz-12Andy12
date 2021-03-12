@@ -26,3 +26,4 @@ void Transform(vector<chess>& v, int& id);//Превращает пешку в ферзя, если она д
 
 
 
+
