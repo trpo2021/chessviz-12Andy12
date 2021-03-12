@@ -6,6 +6,7 @@ using namespace std;
 void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 {
 	int x1, x2, y1, y2;
+	int c=0;
 	// Конвертируем входные данные в координаты для удобства (можно и без этого, но это уже мазохизм)
 	x1 = str[1][0] - 64;
 	y1 = str[1][1] - 48;
@@ -13,7 +14,7 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 	y2 = str[2][1] - 48;
 	if (x1 <= 8 && x1 >= 1 && y1 <= 8 && y1 >= 1 && x2 <= 8 && x2 >= 1 && y2 <= 8 && y2 >= 1)
 	{
-		if ( ((y2 == y1 + 1) || (y2 == y1 - 1)) && x2 == x1)
+		if ( ((y2 == y1 + 1 && v[id].team == 1 && x2 == x1)  ||  (y2 == y1 - 1 && v[id].team == 2 && x2 == x1)) || (y2 == y1 + 2 && v[id].team == 1 && x2 == x1)  || (y2 == y1 - 2 && v[id].team == 2 && x2 == x1))
 		{
 			for (int i = 0; i < 32; ++i)
 			{
@@ -32,7 +33,7 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 			{
 				v[id].location = str[2];//переставляет фигуру
 				flag = 5;
-				v[id].countmove++;
+				++v[id].countmove;
 				Transform(v, id);//Превращает пешку в ферзя, если она дошла до конца доски
 			}
 		}
@@ -55,12 +56,12 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 				}
 			}
 			if (flag == 0)//Ход не может быть сделать
-				cout << "The This piece cannot make this move";
+				cout << "The This piece cannot make this move\n";
 			if (flag == 4)
 			{
 				v[id].location = str[2];//переставляет фигуру
 				flag = 5;
-				v[id].countmove++;
+				++v[id].countmove;
 				Transform(v, id);//Превращает пешку в ферзя, если она дошла до конца доски
 			}
 		}
