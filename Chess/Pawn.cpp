@@ -14,7 +14,7 @@ void CheckPawn(vector<chess>& v, vector<string>& str, int& flag, int& id)
 	y2 = str[2][1] - 48;
 	if (x1 <= 8 && x1 >= 1 && y1 <= 8 && y1 >= 1 && x2 <= 8 && x2 >= 1 && y2 <= 8 && y2 >= 1)
 	{
-		if ( ((y2 == y1 + 1 && v[id].team == 1 && x2 == x1)  ||  (y2 == y1 - 1 && v[id].team == 2 && x2 == x1)) || (y2 == y1 + 2 && v[id].team == 1 && x2 == x1)  || (y2 == y1 - 2 && v[id].team == 2 && x2 == x1))
+		if ( ((y2 == y1 + 1 && v[id].team == 1 && x2 == x1)  ||  (y2 == y1 - 1 && v[id].team == 2 && x2 == x1)) || ((y2 == y1 + 2 && v[id].team == 1 && x2 == x1)  || (y2 == y1 - 2 && v[id].team == 2 && x2 == x1)) && v[id].countmove==0)
 		{
 			for (int i = 0; i < 32; ++i)
 			{
