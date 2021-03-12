@@ -7,5 +7,6 @@ class chess
 		string name = "" ;
 		int team = 0;
 		string location = "";
+		int countmove = 0 ;
 };
 
