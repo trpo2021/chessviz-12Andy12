@@ -11,3 +11,4 @@ Chess/*.pdb
 Chess/.vs/*.db
 Chess/*.ilk
 Chess/.vs/*.ipch
+*.h.gch
