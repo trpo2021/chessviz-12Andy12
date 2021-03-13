@@ -1,2 +1,22 @@
-all:
-	g++ main.cpp Bishop.cpp chess.h ChessPieces.h FileWork.cpp King.cpp Pawn.cpp Qween.cpp Rook.cpp Knight.cpp -o main.exe
+all: main
+
+main: main.o Bishop.o FileWork.o King.o Pawn.o Qween.o Rook.o Knight.o
+	g++ main.o Bishop.o FileWork.o King.o Pawn.o Qween.o Rook.o Knight.o -o main.exe
+main.o: main.cpp
+	g++ -c main.cpp
+Bishop.o: Bishop.cpp
+	g++ -c Bishop.cpp
+FileWork.o: FileWork.cpp
+	g++ -c FileWork.cpp
+King.o: King.cpp
+	g++ -c King.cpp
+Pawn.o: Pawn.cpp
+	g++ -c Pawn.cpp
+Qween.o: Qween.cpp
+	g++ -c Qween.cpp
+Rook.o: Rook.cpp
+	g++ -c Rook.cpp
+Knight.o: Knight.cpp
+	g++ -c Knight.cpp
+clean:
+	rm -rf *.o
